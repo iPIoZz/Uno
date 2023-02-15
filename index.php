@@ -1,7 +1,16 @@
 <?PHP
+require_once 'functions/global.php';
 $error = true;
 $errorMessage = "";
 
+if (isset($_SESSION['username'])) {
+	redirect("/profile.php");
+}
+
+/* Get POST */
+if (isset($_POST['submit'])) {
+	
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +30,8 @@ $errorMessage = "";
 			<p>Erreur!
 				<?PHP print $errorMessage; ?>
 		</div>
-	<?PHP } else { } ?>
+	<?PHP } else {
+	} ?>
 	<!-- login/signup form -->
 	<div class="card" id="login">
 		<div class="card-title">
