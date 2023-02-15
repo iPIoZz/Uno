@@ -1,5 +1,11 @@
+<?PHP
+$error = true;
+$errorMessage = "";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<link rel="stylesheet" href="./styles/styles.index.css">
 	<meta charset="UTF-8">
@@ -7,8 +13,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Uno.. Dos.. Tres - Games</title>
 </head>
+
 <body>
 
+	<?PHP if ($error) { ?>
+		<div class="error">
+			<p>Erreur!
+				<?PHP print $errorMessage; ?>
+		</div>
+	<?PHP } else { } ?>
 	<!-- login/signup form -->
 	<div class="card" id="login">
 		<div class="card-title">
@@ -79,4 +92,5 @@
 	<script src="scripts/particles.js"></script>
 	<script src="scripts/index.js"></script>
 </body>
+
 </html>
