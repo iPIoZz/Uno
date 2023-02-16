@@ -1,5 +1,6 @@
 <?PHP
 /* Connect database */
+$host = "localhost";
 $user = "root";
 $password = "";
 $database = "user";

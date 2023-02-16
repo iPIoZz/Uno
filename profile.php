@@ -1,3 +1,10 @@
+<?PHP
+require_once 'functions/global.php';
+if (!isset($_COOKIE['username'])) {
+  redirect("/index.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,9 +17,9 @@
   <body>
     <div class="shadow">
       <div class="bend">
-        <h2>Bonjour, {user}</h2>
+        <h2>Bonjour, <?php echo $user['username']; ?></h2>
         <h3>Choisissez le jeu auquel vous voulez jouer</h3>
-        <a href="#">Se déconnecter</a>
+        <a href="logout.php">Se déconnecter</a>
       </div>
 
       <div class="games">
