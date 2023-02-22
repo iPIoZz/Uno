@@ -69,6 +69,8 @@ body {
     height: 280px;
     z-index: 1;
 
+    box-shadow:  23px 23px 46px #26090b,
+             -23px -23px 46px #5c171b;
     animation: zoom 900ms linear;
 }
 

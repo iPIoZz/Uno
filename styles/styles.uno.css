@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Montserrat';
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    padding: 0;
+    margin: 0;
+
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("");
+    background-color: #411013;
+}
+
+h2 {
+    font-weight: 400;
+    color: white;
+}
+
+.container {
+
+    width: 95%;
+    height: 80%;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+
+    padding: 20px;
+}
+
+.column {
+
+    height: 100%;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.column:nth-child(1)
+{
+    width: 33.33333333333333%;
+}
+
+.column:nth-child(1) h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.column:nth-child(2)
+{
+    width: 33.33333333333333%;
+}
+
+.games__list {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    background-color: rgba(0,0,0,.60);
+    display: flex;
+    flex-direction: column;
+}
+
+.games__card {
+    border-bottom: 1px solid gray;
+    width: 100%;
+    padding: 10px;
+
+    margin: 5px 0px
+}
+
+.games__card__header {
+    color: white;
+    position: relative;
+}
+
+.games__card__header i {
+    font-size: 12px;
+}
+
+.games__card__button {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #E2574C;
+    cursor: pointer;
+
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+.deactivated {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.games__create {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.games__create__header {
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    
+}
+
+.games__create_header h3 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.games__create__button
+{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #E2574C;
+    cursor: pointer;
+    color: white;
+}
+
+.games__create__body {
+    width: 100%;
+}
+
+.games__create__body__input
+{
+    color: white;
+}
+
+.games__create__body__input input
+{
+    display: block;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
+
+.games__create__body__input label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.games__create__footer {
+    margin-top: 10px;
+}
+
+

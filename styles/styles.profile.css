@@ -100,10 +100,15 @@ body {
 
 #belote {
     background-image: url('../img/belote.jpg');
+    /* Désactiver le curseur */
+    pointer-events: none;
+    cursor: not-allowed;
 }
 
 #snake {
     background-image: url('../img/snake.jpg');
+    pointer-events: none;
+    cursor: not-allowed;
 }
 
 .card {

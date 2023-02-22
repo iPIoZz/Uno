@@ -12,7 +12,7 @@ if (!isset($_COOKIE['username'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.profile.css" />
-    <title>Mon profil</title>
+    <title>Mon profil - <?php echo $user['username']; ?></title>
   </head>
   <body>
     <div class="shadow">
@@ -23,9 +23,9 @@ if (!isset($_COOKIE['username'])) {
       </div>
 
       <div class="games">
-          <div class="card" id="uno">
+          <div class="card" id="uno" onclick="javascript:void(1);">
             <div class="card__content">
-                <div class="card__title">UNO: THE GAMES</div>
+                <div class="card__title">UNO: THE GAME</div>
                 <div class="card__subtitle">
                     1 à 5 joueurs
                 </div>
@@ -66,5 +66,6 @@ if (!isset($_COOKIE['username'])) {
 
     <script src="scripts/particles.js"></script>
     <script src="scripts/animation.js"></script>
+    <script src="scripts/profile.js"></script>
   </body>
 </html>
