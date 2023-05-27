@@ -26,13 +26,31 @@ public class Game {
         this.currentTurn = 0;
         this.reversed = false;
 
-        /*while(currentColour == null || currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
+        while(currentColour == null || currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
         {
             Random r = new Random();
             placeCard(deck.get(r.nextInt(deck.size()))); // sets currentCard, currentColour and currentType
-        }*/
+        }
         this.gameState = GameState.ONGOING;
 
+    }
+
+    public Game(User owner)
+    {
+        this.uuid = UUID.randomUUID();
+        this.owner = new Player(owner.getName(), Card.generateHand());
+        this.password = "";
+        this.deck = Card.generateDeck();
+        this.usedDeck = new ArrayList<>();
+        this.currentTurn = 0;
+        this.reversed = false;
+
+        while(currentColour == null | currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
+        {
+            Random r = new Random();
+            placeCard(deck.get(r.nextInt(deck.size())));
+        }
+        this.gameState = GameState.ONGOING;
     }
 
     public Game(Player owner, String password)
@@ -71,6 +89,11 @@ public class Game {
 
     public GameState getGameState() {
         return gameState;
+    }
+
+    public Player getOwner()
+    {
+        return owner;
     }
 
     public ArrayList<Player> getPlayers()
@@ -148,15 +171,15 @@ public class Game {
             currentTurn++;
     }
 
-    public static void createPlayer(User user)
+    public void createPlayer(User user)
     {
         Player p = new Player(user.getName(), Card.generateHand());
 
-        Game game = new Game(p);
+        user.setBusy(true);
 
         for (Card card :
                 p.getHand()) {
-            game.useCard(card);
+            this.useCard(card);
         }
     }
 
