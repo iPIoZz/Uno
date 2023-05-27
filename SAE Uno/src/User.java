@@ -10,7 +10,6 @@ public class User {
         this.name = name;
         this.uuid = UUID.randomUUID();
         this.busy = false;
-        Main.addUser(this);
     }
 
     public User(User user)
@@ -18,7 +17,6 @@ public class User {
         this.name = name;
         this.uuid = UUID.randomUUID();
         this.busy = false;
-        Main.addUser(this);
     }
 
     public String getName() {

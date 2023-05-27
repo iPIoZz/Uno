@@ -1,22 +1,16 @@
+import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Main {
     private static ArrayList<User> users;
     private static HashMap<User, Player> players;
     private static HashMap<Player, Game> inGameUsers;
     public static void main(String[] args) {
-        init();
+        //init();
 
-        User user = new User("Léo");
-        Game.createPlayer(user);
-
-        System.out.println(inGameUsers.size());
-        Player p = players.get(user);
-
-        Game g = getInGameUsers().get(p);
-
-        System.out.println(g.getCurrentCard().toString());
+        UnoController controller = new UnoController();
     }
 
     private static void init()
@@ -30,7 +24,7 @@ public class Main {
     {
         for (User user :
                 users) {
-            if (user.getName() == name)
+            if (Objects.equals(user.getName(), name))
                 return user;
         }
         return null;

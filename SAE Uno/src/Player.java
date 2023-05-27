@@ -6,7 +6,6 @@ public class Player extends User {
     public Player(String name, ArrayList<Card> hand) {
         super(name);
         this.hand = hand;
-        Main.getPlayers().put(Main.getUserFromName(name), this);
     }
 
     public ArrayList<Card> getHand() {

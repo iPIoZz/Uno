@@ -26,14 +26,13 @@ public class Game {
         this.currentTurn = 0;
         this.reversed = false;
 
-        while(currentColour == null || currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
+        /*while(currentColour == null || currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
         {
             Random r = new Random();
             placeCard(deck.get(r.nextInt(deck.size()))); // sets currentCard, currentColour and currentType
-        }
+        }*/
         this.gameState = GameState.ONGOING;
 
-        Main.addInGameUser(owner, this);
     }
 
     public Game(Player owner, String password)
