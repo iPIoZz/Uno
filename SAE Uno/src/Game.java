@@ -16,15 +16,19 @@ public class Game {
     private char currentType;
     private final GameState gameState;
 
+    private int nbPlayers;
+
     public Game(Player owner)
     {
         this.uuid = UUID.randomUUID();
         this.owner = owner;
         this.password = "";
         this.deck = Card.generateDeck();
+        this.currentCard = deck.get(0);
         this.usedDeck = new ArrayList<>();
         this.currentTurn = 0;
         this.reversed = false;
+        this.nbPlayers = 0;
 
         while(currentColour == null || currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
         {
@@ -41,9 +45,11 @@ public class Game {
         this.owner = new Player(owner.getName(), Card.generateHand());
         this.password = "";
         this.deck = Card.generateDeck();
+        this.currentCard = deck.get(0);
         this.usedDeck = new ArrayList<>();
         this.currentTurn = 0;
         this.reversed = false;
+        this.nbPlayers = 0;
 
         while(currentColour == null | currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
         {
@@ -83,6 +89,10 @@ public class Game {
         return currentCard;
     }
 
+    public void setCurrentCard(Card card) {
+        currentCard = card;
+    }
+
     public CardColour getCurrentColour() {
         return currentColour;
     }
@@ -100,13 +110,16 @@ public class Game {
     {
         ArrayList<Player> players = new ArrayList<>();
         for (Map.Entry<Player, Game> entry :
-        Main.getInGameUsers().entrySet()){
+        UnoController.getInGameUsers().entrySet()){
             if(entry.getValue() == this)
                 players.add(entry.getKey());
         }
 
         return players;
     }
+
+    public int getNbPlayers() { return this.nbPlayers; }
+    public void setNbPlayers(int nb) { this.nbPlayers = nb; }
 
     public boolean canBePlaced(Card card)
     {
@@ -128,10 +141,12 @@ public class Game {
 
     public Player nextPlayer()
     {
+        /*if (getPlayers().size() == 1) return null;
         if(reversed)
             return getPlayers().get(getCurrentTurn()-1);
         else
-            return getPlayers().get(getCurrentTurn()+1);
+            return getPlayers().get(getCurrentTurn()+1);*/
+        return new Player("test", Card.generateHand());
     }
 
     public void placeCard(Card card)
@@ -139,7 +154,7 @@ public class Game {
         if(deck.contains(card) && canBePlaced(card))
         {
             useCard(card);
-            currentCard = card;
+            setCurrentCard(card);
             if(card.getColour() != CardColour.SPECIAL || card.isSpecialColoured()) {
                 currentColour = card.getColour();
                 currentType = card.getType();
@@ -195,7 +210,7 @@ public class Game {
             game.useCard(card);
         }
 
-        Main.addInGameUser(p, game);
+        UnoController.addInGameUser(p, game);
     }
 
     private void drawCard(Player player)
