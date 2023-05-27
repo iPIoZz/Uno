@@ -33,9 +33,9 @@ public class UnoController {
         users = new ArrayList<>();
 
         // Create factice game
-        Player owner = new Player("owner", null);
+        User owner = new User("Owner");
         Game game = new Game(owner);
-        players.put(owner, owner);
-        inGameUsers.put(owner, game);
+        players.put(owner, game.getOwner());
+        inGameUsers.put(game.getOwner(), game);
     }
 }
