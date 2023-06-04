@@ -19,6 +19,13 @@ public class User {
         this.busy = false;
     }
 
+    public User(String username, UUID uuid)
+    {
+        this.name = username;
+        this.uuid = uuid;
+        this.busy = false;
+    }
+
     public String getName() {
         return name;
     }
