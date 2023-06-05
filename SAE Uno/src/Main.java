@@ -7,10 +7,10 @@ public class Main {
     private static ArrayList<User> users;
     private static HashMap<User, Player> players;
     private static HashMap<Player, Game> inGameUsers;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //init();
 
-        UnoController controller = new UnoController();
+        UnoController.start();
     }
 
     private static void init()

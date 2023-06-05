@@ -17,5 +17,6 @@
     <orderEntry type="library" name="jetbrains.annotations" level="application" />
     <orderEntry type="library" name="sparkjava.spark.core" level="project" />
     <orderEntry type="library" name="google.code.gson" level="project" />
+    <orderEntry type="library" name="corundumstudio.socketio.netty" level="project" />
   </component>
 </module>
