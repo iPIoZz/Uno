@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class Main {
     private static ArrayList<User> users;
+    private static ArrayList<Game> games;
     private static HashMap<User, Player> players;
     private static HashMap<Player, Game> inGameUsers;
     public static void main(String[] args) throws InterruptedException {
@@ -50,5 +51,13 @@ public class Main {
     public static void addInGameUser(Player p, Game game)
     {
         inGameUsers.put(p, game);
+    }
+
+    public static ArrayList<Game> getGames() {
+        return games;
+    }
+
+    public static void addGame(Game game) {
+        games.add(game);
     }
 }

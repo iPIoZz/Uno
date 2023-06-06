@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class Game {
     private final UUID uuid;
-    private final Player owner;
+    private Player owner;
     private String password;
     private final ArrayList<Card> deck;
     private final ArrayList<Card> usedDeck;
@@ -18,10 +18,9 @@ public class Game {
 
     private int nbPlayers;
 
-    public Game(Player owner)
+    private Game()
     {
         this.uuid = UUID.randomUUID();
-        this.owner = owner;
         this.password = "";
         this.deck = Card.generateDeck();
         this.currentCard = deck.get(0);
@@ -37,29 +36,28 @@ public class Game {
         }
         this.gameState = GameState.ONGOING;
 
+        Main.addGame(this);
+    }
+
+    private Game(Player owner)
+    {
+        this();
+        this.owner = owner;
+
+        for (Card card :
+                owner.getHand()) {
+            this.useCard(card);
+        }
+
+        Main.addInGameUser(owner, this);
     }
 
     public Game(User owner)
     {
-        this.uuid = UUID.randomUUID();
-        this.owner = new Player(owner.getName(), Card.generateHand());
-        this.password = "";
-        this.deck = Card.generateDeck();
-        this.currentCard = deck.get(0);
-        this.usedDeck = new ArrayList<>();
-        this.currentTurn = 0;
-        this.reversed = false;
-        this.nbPlayers = 0;
-
-        while(currentColour == null | currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
-        {
-            Random r = new Random();
-            placeCard(deck.get(r.nextInt(deck.size())));
-        }
-        this.gameState = GameState.ONGOING;
+        this(new Player(owner, Card.generateHand()));
     }
 
-    public Game(Player owner, String password)
+    public Game(User owner, String password)
     {
         this(owner);
         this.password = password;
@@ -141,12 +139,11 @@ public class Game {
 
     public Player nextPlayer()
     {
-        /*if (getPlayers().size() == 1) return null;
+        if (getPlayers().size() == 1) return null;
         if(reversed)
             return getPlayers().get(getCurrentTurn()-1);
         else
-            return getPlayers().get(getCurrentTurn()+1);*/
-        return new Player("test", Card.generateHand());
+            return getPlayers().get(getCurrentTurn()+1);
     }
 
     public void placeCard(Card card)
@@ -188,14 +185,7 @@ public class Game {
 
     public void createPlayer(User user)
     {
-        Player p = new Player(user.getName(), Card.generateHand());
-
-        user.setBusy(true);
-
-        for (Card card :
-                p.getHand()) {
-            this.useCard(card);
-        }
+        createPlayer(user, this);
     }
 
     public static void createPlayer(User user, Game game)
@@ -203,7 +193,10 @@ public class Game {
         if(game.getPlayers().size() >= 8 || game.getGameState() != GameState.WAITING)
             return;
 
-        Player p = new Player(user.getName(), Card.generateHand());
+        Player p = new Player(user, Card.generateHand());
+
+        Main.addInGameUser(p, game);
+        user.setBusy(true);
 
         for (Card card :
                 p.getHand()) {
