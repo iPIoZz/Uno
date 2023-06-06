@@ -27,7 +27,7 @@ public class Game {
         this.usedDeck = new ArrayList<>();
         this.currentTurn = 0;
         this.reversed = false;
-        this.nbPlayers = 0;
+        this.nbPlayers = 1;
 
         while(currentColour == null || currentColour == CardColour.SPECIAL || currentCard.isSpecialColoured())
         {

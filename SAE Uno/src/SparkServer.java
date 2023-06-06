@@ -124,15 +124,7 @@ public class SparkServer {
 
             /* Create user and game */
             User user = new User(username, uuid);
-            UnoController.users.add(user);
-
             Game game = new Game(user);
-            UnoController._games.add(game);
-            UnoController.players.put(user, game.getOwner());
-            UnoController.inGameUsers.put(game.getOwner(), game);
-            game.setNbPlayers(game.getNbPlayers() + 1);
-
-
             return gson.toJson(game.getUUID());
         });
     }
