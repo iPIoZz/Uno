@@ -7,7 +7,7 @@ public class Main {
     private static ArrayList<User> users;
     private static ArrayList<Game> games;
     private static HashMap<User, Player> players;
-    private static HashMap<Player, Game> inGameUsers;
+    private static HashMap<Player, Game> inGameUsers; //
     public static void main(String[] args) throws InterruptedException {
         //init();
 

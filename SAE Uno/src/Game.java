@@ -23,7 +23,7 @@ public class Game {
         this.uuid = UUID.randomUUID();
         this.password = "";
         this.deck = Card.generateDeck();
-        this.currentCard = deck.get(0);
+        this.currentCard = deck.get(0);//
         this.usedDeck = new ArrayList<>();
         this.currentTurn = 0;
         this.reversed = false;
